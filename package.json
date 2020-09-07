@@ -1,0 +1,19 @@
+{
+  "name": "frontend-capstone",
+  "version": "1.0.0",
+  "description": "Udacity FrontEnd Nanodegree",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/claudioacioli/udacity-frontend-capstone.git"
+  },
+  "author": "Claudio Acioli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/claudioacioli/udacity-frontend-capstone/issues"
+  },
+  "homepage": "https://github.com/claudioacioli/udacity-frontend-capstone#readme"
+}
