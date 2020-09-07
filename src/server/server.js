@@ -1,8 +1,13 @@
 const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 const port = 3000
 const app = express()
 const { getGeolocationByCity } = require('./lib/api')
 
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
+app.use(cors())
 app.use(express.static('dist'))
 
 app.get('/api/', async (req, res) => {
