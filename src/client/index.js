@@ -1,15 +1,18 @@
-import { bySelector } from './js/by';
+import { bySelector, byId } from './js/by';
+import { getTravelInfo } from './js/travel';
 
 const
 /*
  * DOM elements
  */ 
+  cityElement = byId('city'),
   buttonElement = bySelector('button[type=submit]'),
 /* 
  * handlers
  */
   handleSubmit = e => {
     e.preventDefault();
+    getTravelInfo(cityElement.value);
   },
 
   handleLoad = e => {
