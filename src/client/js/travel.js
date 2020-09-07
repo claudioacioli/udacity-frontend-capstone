@@ -1,5 +1,13 @@
+import { getInfoByCity } from './api.js';
+
 export const  
   getTravelInfo = city => {
-    console.log('hello world', city);   
+    getInfoByCity(city)
+      .then(result => {
+        console.log(result);
+      })
+      .catch(err => {
+        console.error(err)
+      });
   }
 ;
