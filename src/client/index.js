@@ -7,9 +7,19 @@ const
 // functions
   handleLoad = e => {
     console.log('Hello World');
+    buttonElement.addEventListener('click', handleSubmit);
+  },
+
+  handleSubmit = e => {
+    e.preventDefault();
+  },
+
+  handleUnload = e => {
+    buttonElement.removeEventListener('click', handleSubmit);
+    document.removeEventListener('DOMContentLoaded', handleLoad);
   }
 ;
 
 // handlers
 document.addEventListener('DOMContentLoaded', handleLoad);
-document.removeEventListener('DOMContentLoaded', handleLoad);
+document.addEventListener('beforeunload', handleUnload);
