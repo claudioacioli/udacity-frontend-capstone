@@ -2,11 +2,11 @@
   "name": "frontend-capstone",
   "version": "1.0.0",
   "description": "Udacity FrontEnd Nanodegree",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf dist & npx webpack",
-    "start": "node src/server/index.js"
+    "start": "node src/server/server.js"
   },
   "repository": {
     "type": "git",
