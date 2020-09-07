@@ -4,14 +4,15 @@ const
 // elements 
   buttonElement = bySelector('button[type=submit]'),
 
-// functions
-  handleLoad = e => {
-    console.log('Hello World');
-    buttonElement.addEventListener('click', handleSubmit);
-  },
+// handlers
 
   handleSubmit = e => {
     e.preventDefault();
+  },
+
+  handleLoad = e => {
+    console.log('Hello World');
+    buttonElement.addEventListener('click', handleSubmit);
   },
 
   handleUnload = e => {
