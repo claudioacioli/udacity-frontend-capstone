@@ -1,11 +1,13 @@
 import { bySelector } from './js/by';
 
 const
-// elements 
+/*
+ * DOM elements
+ */ 
   buttonElement = bySelector('button[type=submit]'),
-
-// handlers
-
+/* 
+ * handlers
+ */
   handleSubmit = e => {
     e.preventDefault();
   },
@@ -21,6 +23,8 @@ const
   }
 ;
 
-// handlers
+/**
+ * App Start
+ */
 document.addEventListener('DOMContentLoaded', handleLoad);
 document.addEventListener('beforeunload', handleUnload);
