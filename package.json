@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/claudioacioli/udacity-frontend-capstone/issues"
   },
-  "homepage": "https://github.com/claudioacioli/udacity-frontend-capstone#readme"
+  "homepage": "https://github.com/claudioacioli/udacity-frontend-capstone#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
