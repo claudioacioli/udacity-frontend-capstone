@@ -3,6 +3,8 @@ const port = 3000
 const app = express()
 const { getGeolocationByCity } = require('./lib/api')
 
+app.use(express.static('dist'))
+
 app.get('/api/', async (req, res) => {
   
   const city = req.query.city ? req.query.city.toString().trim() : ''
