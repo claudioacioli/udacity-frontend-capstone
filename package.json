@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist & npx webpack",
+    "build-prod": "rm -rf dist & npx webpack --config webpack.prod.js",
+    "build-dev": "rm -rf dist & npx webpack --config webpack.dev.js",
     "start": "node src/server/server.js"
   },
   "repository": {
