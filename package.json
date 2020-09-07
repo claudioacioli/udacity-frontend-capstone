@@ -18,5 +18,9 @@
   "homepage": "https://github.com/claudioacioli/udacity-frontend-capstone#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   }
 }
