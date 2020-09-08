@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const dotenv = require('dotenv')
 // Utilities
-const { getGeolocationByCity } = require('./lib/api')
+const { getCoordsByCity } = require('./lib/api')
 // Settings
 const port = 3000
 const app = express()
@@ -20,8 +20,8 @@ app.get('/api/', async (req, res) => {
   const date = req.query.date ? req.query.date.toString().trim() : ''
 
   const result = city.length
-    ? await getGeolocationByCity(city)
-    : {} 
+    ? await getCoordsByCity(city)
+    : {}
   
   res.send(result)
 
