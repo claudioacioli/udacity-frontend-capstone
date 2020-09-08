@@ -6,10 +6,10 @@ const
     const username = process.env.API_USERNAME_GEONAMES
     const url = new URL(`http://api.geonames.org/searchJSON?q=${encodeURIComponent(city)}&maxRows=1&username=${username}`)
     const result = await getData(url)
-    if("geonames" in result && result.geonames.length){ 
-      console.log(result.geonames[0])
+    
+    if("geonames" in result && result.geonames.length)
       return result.geonames[0]
-    }
+
     return {}
   },
 
@@ -29,10 +29,18 @@ const
   getWeatherByCoords = async (lat, lng) => {
     const url = `/current?lat=${lat}&lon=${lng}`
     return await getDataFromWeatherBit(url)
+  },
+
+  getDataFromPixabay = async q => {
+    const key = process.env.API_KEY_PIXABAY 
+    const url = new URL(`https://pixabay.com/api/?key=${key}&image_type=photo&q=${q}&per_page=3`)
+    const result = await getData(url)
+    return result
   }
 ;
 
 module.exports = {
   getCoordsByCity,
-  getWeatherByCoords
+  getWeatherByCoords,
+  getDataFromPixabay
 }
