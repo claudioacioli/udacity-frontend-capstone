@@ -1,10 +1,14 @@
+//Requiriments
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const dotenv = require('dotenv')
+// Utilities
+const { getGeolocationByCity } = require('./lib/api')
+// Settings
 const port = 3000
 const app = express()
-const { getGeolocationByCity } = require('./lib/api')
-
+dotenv.config()
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(cors())
