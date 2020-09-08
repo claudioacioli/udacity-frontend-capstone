@@ -36,11 +36,20 @@ const
     const url = new URL(`https://pixabay.com/api/?key=${key}&image_type=photo&q=${q}&per_page=3`)
     const result = await getData(url)
     return result
+  },
+
+  getImagesByCity = async city => {
+    const data = await getDataFromPixabay(city)
+    const hits = "hits" in data && data.hits.length ? data.hits : []
+
+    return hits.map(({ webformatURL, webformatWidth, webformatHeight }) => (
+      { "url" : webformatURL, "width": webformatWidth, "height": webformatHeight}
+    ))
   }
 ;
 
 module.exports = {
   getCoordsByCity,
   getWeatherByCoords,
-  getDataFromPixabay
+  getImagesByCity
 }
