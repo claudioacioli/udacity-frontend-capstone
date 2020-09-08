@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const dotenv = require('dotenv')
 // Utilities
-const { getCoordsByCity } = require('./lib/api')
+const { getCoordsByCity, getWeatherByCoords } = require('./lib/api')
 // Settings
 const port = 3000
 const app = express()
@@ -19,11 +19,16 @@ app.get('/api/', async (req, res) => {
   const city = req.query.city ? req.query.city.toString().trim() : ''
   const date = req.query.date ? req.query.date.toString().trim() : ''
 
-  const result = city.length
+  const geoResult = city.length
     ? await getCoordsByCity(city)
     : {}
   
-  res.send(result)
+  const { lat=0, lng=0 } = geoResult;
+  const weatherResult = lat && lng 
+    ? await getWeatherByCoords(lat, lng)
+    : {}
+
+  res.send({...geoResult, ...weatherResult})
 
 })
 
