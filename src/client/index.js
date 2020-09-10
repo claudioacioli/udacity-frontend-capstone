@@ -1,4 +1,5 @@
 import './styles/cssura.css'
+import './styles/app.css'
 import { bySelector, byId } from './js/by';
 import { getTravelInfo } from './js/travel';
 

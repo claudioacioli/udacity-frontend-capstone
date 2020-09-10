@@ -1,0 +1,33 @@
+.bg--root {
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+.main {
+  margin: 0 auto 0 auto; 
+  max-width: 100vw;
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "content"
+  ;
+  padding: 0 1em 1em;
+}
+
+@media(min-width: 50em) {
+  .main {
+    max-width: 40vw;
+  }
+}
+
+.align--right {
+  text-align: right;
+}
+
+.slogan {
+  text-shadow: 2px 2px #fff; 
+  text-indent:0; 
+  font-size:2em;
+}
