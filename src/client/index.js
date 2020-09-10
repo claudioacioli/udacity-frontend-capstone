@@ -1,3 +1,4 @@
+import './styles/cssura.css'
 import { bySelector, byId } from './js/by';
 import { getTravelInfo } from './js/travel';
 
