@@ -1,13 +1,8 @@
 import { getInfoByCity } from './api.js';
 
 export const  
-  getTravelInfo = city => {
-    getInfoByCity(city)
-      .then(result => {
-        console.log(result);
-      })
-      .catch(err => {
-        console.error(err)
-      });
+  getTravelInfo = async city => {
+    const result = await getInfoByCity(city)
+    console.log(result);
   }
 ;
