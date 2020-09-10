@@ -5,19 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel</title>
   </head>
-  <body>
-    <form>
-      <div>
-        <label>City</label>
-        <input type="text" name="city" id="city">
+  <body class="bg--root">
+    <main class="main">
+      <div class="box mt--1">
+        <div class="box__header">
+          <h1>Travel</h1>
+        </div>
+        <form>
+        <div class="box__body">
+          <p class="mt--0 pt--0 slogan">Welcome, tell us about your travel:</p>
+          <div>
+            <label class="label mt--1">City:</label>
+            <input type="text" class="textfield" id="city" name="city" placeholder="Rio de Janeiro">
+          </div>
+          <div>
+            <label class="label mt--1">When</label>
+            <input type="date" class="textfield mb--2" id="date" name="date" placeholder="when">
+          </div>
+        </div>
+        <div class="box__footer align--right" >
+          <button type="submit" class="button ml--auto button--pill button--success">Lets see...</button>
+        </div>
+        </form>
       </div>
-      <div>
-        <label>Date</label>
-        <input type="date" name="date" id="date">
-      </div>
-      <div>
-        <button type="submit">Go to!</button>
-      </div>
-    </form>
+    </main>
   </body>
 </html>
