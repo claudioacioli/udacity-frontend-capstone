@@ -8,21 +8,45 @@ const
  * DOM elements
  */ 
   cityElement = byId('city'),
+  modalElement = bySelector('.modal'),
+  openElement = bySelector('button[type=button]'),
+  closeElement = byId('close'),
   buttonElement = bySelector('button[type=submit]'),
 /* 
  * handlers
  */
+
+  showModal = () => {
+    modalElement.classList.add('modal--show');
+  },
+
+  hideModal = () => {
+    modalElement.classList.remove('modal--show');
+  },
+
   handleSubmit = e => {
     e.preventDefault();
     getTravelInfo(cityElement.value);
   },
+  
+  handleModal = e => {
+    console.log('modal');
+    showModal();
+  },
 
   handleLoad = e => {
     console.log('Hello World');
+    const search = new URLSearchParams(window.location.search);
+    const city = search.get('city') ? search.get('city') : 'Brasilia';
+    getTravelInfo(city);
     buttonElement.addEventListener('click', handleSubmit);
+    openElement.addEventListener('click', showModal);
+    closeElement.addEventListener('click', hideModal);
   },
 
   handleUnload = e => {
+    openElement.removeEventListener('click',showModal);
+    closeElement.removeEventListener('click', hideModal);
     buttonElement.removeEventListener('click', handleSubmit);
     document.removeEventListener('DOMContentLoaded', handleLoad);
   }
