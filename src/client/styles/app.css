@@ -31,3 +31,31 @@
   text-indent:0; 
   font-size:2em;
 }
+
+.bg--city {
+  background-image:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 40%) 
+  ;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-top-left-radius: .35em;
+  border-top-right-radius: .35em;
+}
+
+.image--wrap{
+  background-color: #fff; 
+  border-radius: .24em; 
+  padding:.25em; 
+  box-shadow: 0 0 15px 0 rgba(0,0,0,.5);
+}
+
+.app__box {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;
+}
+
+.hide {
+  display: none;
+}
