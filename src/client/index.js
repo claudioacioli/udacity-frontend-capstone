@@ -26,16 +26,16 @@ const
 
   handleSubmit = e => {
     e.preventDefault();
-    getTravelInfo(cityElement.value);
+    getTravelInfo(cityElement.value)
+      .then(hideModal)
+      .catch(err => console.err(err));
   },
   
   handleModal = e => {
-    console.log('modal');
     showModal();
   },
 
   handleLoad = e => {
-    console.log('Hello World');
     const search = new URLSearchParams(window.location.search);
     const city = search.get('city') ? search.get('city') : 'Brasilia';
     getTravelInfo(city);
