@@ -1,4 +1,4 @@
-import './styles/cssura-v1.1.3.css'
+import './styles/cssura-v1.1.4.css'
 import './styles/app.css'
 import { bySelector, byId } from './js/by';
 import { handleOpenModal } from './js/modal';
