@@ -59,3 +59,11 @@
 .hide {
   display: none;
 }
+
+.app__toolbar {
+  display: flex;
+}
+
+.app__title {
+  flex: 1;
+}
