@@ -1,30 +1,23 @@
 import './styles/cssura-v1.1.5.css'
 import './styles/app.css'
-import { bySelector, byId } from './js/by';
+import { bySelector } from './js/by';
 import { handleOpenModal } from './js/modal';
-import { getTravelInfo } from './js/travel';
+import { handleSubmit } from './js/form';
+//import { getTravelInfo } from './js/travel';
 
 const
 /*
  * DOM elements
  */ 
-  cityElement = byId('city'),
   openElement = bySelector('button[type=button]'),
-  buttonElement = bySelector('button[type=submit]'),
-/* 
- * handlers
- */
-  handleSubmit = e => {
-    e.preventDefault();
-    getTravelInfo(cityElement.value)
-  }
+  buttonElement = bySelector('button[type=submit]')
 ;
 /**
  * App Start
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  getTravelInfo('Brasilia');
+  //getTravelInfo('Brasilia');
   buttonElement.addEventListener('click', handleSubmit);
   openElement.addEventListener('click', handleOpenModal);
 });
