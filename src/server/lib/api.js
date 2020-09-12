@@ -33,7 +33,7 @@ const
 
   getDataFromPixabay = async q => {
     const key = process.env.API_KEY_PIXABAY 
-    const url = new URL(`https://pixabay.com/api/?key=${key}&image_type=photo&q=${q}&per_page=3`)
+    const url = new URL(`https://pixabay.com/api/?key=${key}&image_type=photo&q=${q}&category=places&per_page=3`)
     const result = await getData(url)
     return result
   },
