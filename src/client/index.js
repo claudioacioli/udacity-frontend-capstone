@@ -14,31 +14,23 @@ const
 /* 
  * handlers
  */
-
   handleSubmit = e => {
     e.preventDefault();
     getTravelInfo(cityElement.value)
-  },
-
-  handleLoad = e => {
-    const search = new URLSearchParams(window.location.search);
-    const city = search.get('city') ? search.get('city') : 'Brasilia';
-    
-    getTravelInfo(city);
-
-    buttonElement.addEventListener('click', handleSubmit);
-    openElement.addEventListener('click', handleOpenModal);
-  },
-
-  handleUnload = e => {
-    openElement.removeEventListener('click',handleModal);
-    buttonElement.removeEventListener('click', handleSubmit);
-    document.removeEventListener('DOMContentLoaded', handleLoad);
   }
 ;
-
 /**
  * App Start
  */
-document.addEventListener('DOMContentLoaded', handleLoad);
-document.addEventListener('beforeunload', handleUnload);
+
+document.addEventListener('DOMContentLoaded', () => {
+  getTravelInfo('Brasilia');
+  buttonElement.addEventListener('click', handleSubmit);
+  openElement.addEventListener('click', handleOpenModal);
+});
+
+document.addEventListener('beforeunload', () => {
+  openElement.removeEventListener('click',handleModal);
+  buttonElement.removeEventListener('click', handleSubmit);
+  document.removeEventListener('DOMContentLoaded', handleLoad);
+});
