@@ -6,8 +6,8 @@
     <title>Travel</title>
   </head>
   <body class="bg--root">
-    <main class="main">
 
+    <main class="main">
       <div class="box mt--1 bg--city">
         <div class="box__header app__toolbar">
           <h1 class="app__title">Travel</h1>
@@ -38,14 +38,16 @@
           <div>
             <label class="label mt--1">City:</label>
             <input type="text" class="textfield" id="city" name="city" placeholder="Rio de Janeiro">
-          </div>
-          <div class="hide" >
+            <span class="textfield__error textfield--error">Please, you need specify the date.</span>
+          </div> 
+          <div>
             <label class="label mt--1">When</label>
-            <input type="date" class="textfield mb--2" id="date" name="date" placeholder="when">
+            <input type="date" class="textfield" id="date" name="date" placeholder="when">
+            <span class="textfield__error textfield--error">Please, you need specify the date</span>
           </div>
         </div>
         <div class="modal__footer align--right" >
-          <button type="submit" class="button ml--auto button--pill button--success">Lets see...</button>
+          <button type="submit" class="button button--pill button--success">Lets see...</button>
         </div>
       </div>
     </div>
