@@ -1,5 +1,6 @@
-import { getInfoByCity } from './api.js';
-import { byId, bySelector } from './by.js';
+import { getInfoByCity } from './api';
+import { byId, bySelector } from './by';
+import { handleCloseModal } from './modal';
 
 const
   wallElement = bySelector(".bg--city"),
@@ -11,19 +12,22 @@ const
 ;
 
 export const  
-  getTravelInfo = async city => {
-    
-    const result = await getInfoByCity(city)
 
+  refreshUI = async result => {
     wallElement.style.backgroundImage = `linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 40%), url(${result.images[1].url})`;
     placeImgElement.src = result.images[0].url;
     nameElement.textContent = result.city_name;
     weatherElement.textContent = result.weather.description;
     weatherImgElement.src = `https://www.weatherbit.io/static/img/icons/${result.weather.icon}.png`
     tempElement.textContent = result.temp;
+    return;
+  },
 
-    
-  }
+  getTravelInfo = async city => 
+    getInfoByCity(city)
+      .then(refreshUI)
+      .then(handleCloseModal)
+      .catch(err => console.error(err))
 ;
 
 

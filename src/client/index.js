@@ -1,7 +1,7 @@
 import './styles/cssura.css'
 import './styles/app.css'
 import { bySelector, byId } from './js/by';
-import { handleOpenModal, handleCloseModal } from './js/modal';
+import { handleOpenModal } from './js/modal';
 import { getTravelInfo } from './js/travel';
 
 const
@@ -18,8 +18,6 @@ const
   handleSubmit = e => {
     e.preventDefault();
     getTravelInfo(cityElement.value)
-      .then(handleCloseModal)
-      .catch(err => console.error(err));
   },
 
   handleLoad = e => {
