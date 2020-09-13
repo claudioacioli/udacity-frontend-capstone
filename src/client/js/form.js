@@ -1,10 +1,13 @@
-import { byId } from './by';
-import { getTravelInfo } from './travel';
+import { byId, bySelector } from './by';
+import { getInfoByCity } from './api';
+import Info from './info';
+import Modal from './modal';
 
 const 
   
   CSS_CLASS_ERROR = 'textfield--error',
 
+  buttonElement = bySelector('button[type=submit]'),
   cityElement = byId('city'),
   dateElement = byId('date'),
   citySpanElement = cityElement.nextElementSibling,
@@ -48,12 +51,22 @@ const
 
     dateSpanElement.classList.remove(CSS_CLASS_ERROR);
     
-    getTravelInfo(city);
+    getInfoByCity(city)
+      .then(result => {
+        Info.render(result);
+        Modal.close();
+      })
+      .catch(err => {
+        console.error(err);
+      })
 
+  },
+
+  init = () => {
+    buttonElement.addEventListener("click", handleSubmit);
   }
 ;
 
-export { 
-  handleSubmit,
-  renderResetForm
+export default {
+  init
 };

@@ -1,10 +1,10 @@
 import { bySelector, byId } from './by';
-import { renderResetForm } from './form';
 
 const 
 
   CSS_CLASS_SHOW = 'modal--show',
 
+  openElement = bySelector('button[type="button"]'),
   dropElement = bySelector('.modal__backdrop'),
   modalElement = bySelector('.modal'),
   closeElement = byId('close'),
@@ -21,16 +21,14 @@ const
     modalElement.classList.remove(CSS_CLASS_SHOW);
   },
 
-  handleOpenModal = e => 
-    showModal()
-  ,
-
-  handleCloseModal = e => 
-    hideModal();
+  init = () => {
+    openElement.addEventListener('click', showModal);
+    closeElement.addEventListener('click', hideModal);
+  }
 ;
 
-export {
-  handleOpenModal,
-  handleCloseModal
+export default {
+  init,
+  close: hideModal
 }
 
