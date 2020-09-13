@@ -17,6 +17,10 @@ const
     !value.toString().trim().length
   ,
 
+  isMoreThen = (a, b) =>
+    a > b
+  ,
+
   renderEmptyCity = () => {
     citySpanElement.textContent = 'Please specify the city of your next travel!';
     citySpanElement.classList.add(CSS_CLASS_ERROR);
@@ -24,6 +28,11 @@ const
 
   renderEmptyDate = () => {
     dateSpanElement.textContent = 'Please specify the date of your next travel!';
+    dateSpanElement.classList.add(CSS_CLASS_ERROR);
+  },
+  
+  renderInvalidDate = () => {
+    dateSpanElement.textContent = 'Please specify a valid date: Is tomorrow more then today.';
     dateSpanElement.classList.add(CSS_CLASS_ERROR);
   },
 
@@ -48,6 +57,13 @@ const
     
     if(isEmpty(date))
       return renderEmptyDate();
+
+    try {
+      if(!isMoreThen(dateElement.valueAsDate.getTime(), (new Date()).getTime()))
+        return renderInvalidDate();
+    } catch (ex) {
+      return renderInvalidDate();
+    }
 
     dateSpanElement.classList.remove(CSS_CLASS_ERROR);
     
