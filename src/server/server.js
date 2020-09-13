@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const dotenv = require('dotenv')
 // Routes
-const {rootRoute} = require('./routes')
+const { apiRoute, notFoundRoute } = require('./routes')
 // Settings
 const port = 3000
 const app = express()
@@ -14,7 +14,7 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(express.static('dist'))
 
-app.get('/api/', rootRoute)
+app.get('/api/', apiRoute)
 
 //Routes
 app.use((req, res) => {

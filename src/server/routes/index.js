@@ -19,9 +19,15 @@ const
 
     res.send({...geoResult, ...weatherResult, images})
 
+  },
+
+  notFoundRoute = (req, res) => {
+    res.type('text/plain')
+    res.send('Ops, where are you?\nNot Found!')
   }
 ;
 
 module.exports = {
-  apiRoute
+  apiRoute,
+  notFoundRoute
 };
