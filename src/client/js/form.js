@@ -63,7 +63,7 @@ const
       return renderEmptyDate();
 
     if(!dateElement.valueAsDate 
-      || !isMoreThen(dateElement.valueAsDate.getTime(), (new Date()).getTime())
+      || !isMoreThen(dateElement.valueAsDate.getTime(), (new Date()).getTime()))
         return renderInvalidDate();
 
     dateSpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
