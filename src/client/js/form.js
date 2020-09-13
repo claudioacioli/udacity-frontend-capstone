@@ -1,11 +1,15 @@
 import { byId, bySelector } from './by';
 import { getInfoByCity } from './api';
+import { 
+  CSS_CLASS_INPUT_ERROR,
+  MESSAGE_ERROR_EMPTY_CITY,
+  MESSAGE_ERROR_EMPTY_DATE,
+  MESSAGE_ERROR_INVALID_DATE
+} from './constants';
 import Info from './info';
 import Modal from './modal';
 
 const 
-  
-  CSS_CLASS_ERROR = 'textfield--error',
 
   buttonElement = bySelector('button[type=submit]'),
   cityElement = byId('city'),
@@ -22,25 +26,25 @@ const
   ,
 
   renderEmptyCity = () => {
-    citySpanElement.textContent = 'Please specify the city of your next travel!';
-    citySpanElement.classList.add(CSS_CLASS_ERROR);
+    citySpanElement.textContent = MESSAGE_ERROR_EMPTY_CITY;
+    citySpanElement.classList.add(CSS_CLASS_INPUT_ERROR);
   },
 
   renderEmptyDate = () => {
-    dateSpanElement.textContent = 'Please specify the date of your next travel!';
-    dateSpanElement.classList.add(CSS_CLASS_ERROR);
+    dateSpanElement.textContent = MESSAGE_ERROR_EMPTY_DATE;
+    dateSpanElement.classList.add(CSS_CLASS_INPUT_ERROR);
   },
   
   renderInvalidDate = () => {
-    dateSpanElement.textContent = 'Please specify a valid date: Is tomorrow more then today.';
-    dateSpanElement.classList.add(CSS_CLASS_ERROR);
+    dateSpanElement.textContent = MESSAGE_ERROR_INVALID_DATE;
+    dateSpanElement.classList.add(CSS_CLASS_INPUT_ERROR);
   },
 
   renderResetForm = () => {
     cityElement.value = '';
     dateElement.value = '';
-    citySpanElement.classList.remove(CSS_CLASS_ERROR);
-    dateSpanElement.classList.remove(CSS_CLASS_ERROR);
+    citySpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
+    dateSpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
   },
 
   handleSubmit = e => {
@@ -53,7 +57,7 @@ const
     if(isEmpty(city))
       return renderEmptyCity();
 
-    citySpanElement.classList.remove(CSS_CLASS_ERROR);
+    citySpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
     
     if(isEmpty(date))
       return renderEmptyDate();
@@ -65,7 +69,7 @@ const
       return renderInvalidDate();
     }
 
-    dateSpanElement.classList.remove(CSS_CLASS_ERROR);
+    dateSpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
     
     getInfoByCity(city)
       .then(result => {
