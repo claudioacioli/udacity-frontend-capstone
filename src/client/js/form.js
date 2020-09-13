@@ -62,12 +62,9 @@ const
     if(isEmpty(date))
       return renderEmptyDate();
 
-    try {
-      if(!isMoreThen(dateElement.valueAsDate.getTime(), (new Date()).getTime()))
+    if(!dateElement.valueAsDate 
+      || !isMoreThen(dateElement.valueAsDate.getTime(), (new Date()).getTime())
         return renderInvalidDate();
-    } catch (ex) {
-      return renderInvalidDate();
-    }
 
     dateSpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
     
