@@ -3,8 +3,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const dotenv = require('dotenv')
-// Routes
 const { apiRoute, notFoundRoute } = require('./routes')
+
 // Settings
 const port = 3000
 const app = express()
@@ -14,14 +14,11 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(express.static('dist'))
 
+// Routes
 app.get('/api/', apiRoute)
+app.use(notFoundRoute)
 
-//Routes
-app.use((req, res) => {
-  res.type('text/plain')
-  res.send('Ops, where are you?\nNot Found!')
-})
-
+// Listening
 app.listen(port, () => {
   console.log(`Running the server on ${port}`);
 })
