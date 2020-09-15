@@ -33,9 +33,16 @@ const
       weather_icon_url: `https://www.weatherbit.io/static/img/icons/${result.weather.icon}.png`,
       ...result
     }
-
   },
 
+  getWeatherByCoordsAndDate = async (lat, lng, start, end) => {
+    const url = `/history/daily?lat=${lat}&lon=${lng}&start_date=${start}&end_date=${end}`
+    const result = await getDataFromWeatherBit(url)
+    return { 
+      weather_icon_url: `https://www.weatherbit.io/static/img/icons/${result.weather.icon}.png`,
+      ...result
+    }
+  },
   getDataFromPixabay = async q => {
     const key = process.env.API_KEY_PIXABAY 
     const url = new URL(`https://pixabay.com/api/?key=${key}&image_type=photo&q=${q}&category=places&per_page=3`)
