@@ -6,10 +6,8 @@ const
 
   init = (data=[]) => {
     const fragment = document.createDocumentFragment();
-    for(const item of data) { 
-      console.log(item);
+    for(const item of data) 
       fragment.appendChild(Card.create(item));
-    }
     containerElement.appendChild(fragment);  
   },
 
