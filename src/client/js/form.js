@@ -6,6 +6,10 @@ import {
   MESSAGE_ERROR_EMPTY_DATE,
   MESSAGE_ERROR_INVALID_DATE
 } from './constants';
+import {
+  isEmpty,
+  isMoreThen
+} from './utils';
 import Info from './info';
 import Modal from './modal';
 
@@ -17,14 +21,6 @@ const
   citySpanElement = cityElement.nextElementSibling,
   dateSpanElement = dateElement.nextElementSibling,
   
-  isEmpty = value  => 
-    !value.toString().trim().length
-  ,
-
-  isMoreThen = (a, b) =>
-    a > b
-  ,
-
   renderEmptyCity = () => {
     citySpanElement.textContent = MESSAGE_ERROR_EMPTY_CITY;
     citySpanElement.classList.add(CSS_CLASS_INPUT_ERROR);
