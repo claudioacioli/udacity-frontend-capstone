@@ -17,7 +17,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'main.js'
+    filename: '[name][contenthash:8].js'
   },
   module: {
     rules: [
