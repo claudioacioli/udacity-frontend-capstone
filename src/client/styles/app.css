@@ -189,3 +189,11 @@
   color: #4e4a67;
   line-height: 1.5em;
 }
+
+.d--flex {
+  display: flex!important;
+}
+
+.fx--1 {
+  flex: 1!important;
+}

@@ -17,30 +17,34 @@ const
 
   buttonElement = bySelector('button[type=submit]'),
   cityElement = byId('city'),
-  dateElement = byId('date'),
+  startElement = byId('start'),
+  endElement = byId('end'),
   citySpanElement = cityElement.nextElementSibling,
-  dateSpanElement = dateElement.nextElementSibling,
+  startSpanElement = startElement.nextElementSibling,
+  endSpanElement = endElement.nextElementSibling,
   
   renderEmptyCity = () => {
     citySpanElement.textContent = MESSAGE_ERROR_EMPTY_CITY;
     citySpanElement.classList.add(CSS_CLASS_INPUT_ERROR);
   },
 
-  renderEmptyDate = () => {
-    dateSpanElement.textContent = MESSAGE_ERROR_EMPTY_DATE;
-    dateSpanElement.classList.add(CSS_CLASS_INPUT_ERROR);
+  renderEmptyDate = element => {
+    element.textContent = MESSAGE_ERROR_EMPTY_DATE;
+    element.classList.add(CSS_CLASS_INPUT_ERROR);
   },
   
-  renderInvalidDate = () => {
-    dateSpanElement.textContent = MESSAGE_ERROR_INVALID_DATE;
-    dateSpanElement.classList.add(CSS_CLASS_INPUT_ERROR);
+  renderInvalidDate = element => {
+    element.textContent = MESSAGE_ERROR_INVALID_DATE;
+    element.classList.add(CSS_CLASS_INPUT_ERROR);
   },
 
   renderResetForm = () => {
     cityElement.value = '';
-    dateElement.value = '';
+    startElement.value = '';
+    endElement.value = '';
     citySpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
-    dateSpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
+    startSpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
+    endSpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
   },
 
   handleSubmit = e => {
@@ -48,23 +52,36 @@ const
     e.preventDefault();
 
     const city = cityElement.value;
-    const date = dateElement.value;
+    const start = startElement.value;
+    const end = endElement.value;
 
     if(isEmpty(city))
       return renderEmptyCity();
 
     citySpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
     
-    if(isEmpty(date))
-      return renderEmptyDate();
+    if(isEmpty(start))
+      return renderEmptyDate(startSpanElement);
 
-    if(!dateElement.valueAsDate 
-      || !isMoreThen(dateElement.valueAsDate.getTime(), (new Date()).getTime()))
-        return renderInvalidDate();
+    const todayDate = new Date();
+    const startDate = startElement.valueAsDate;
+    if(!startDate 
+      || !isMoreThen(startDate.getTime(), todayDate.getTime()))
+        return renderInvalidDate(startSpanElement);
 
-    dateSpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
+    startSpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
     
-    getInfoByCity(city)
+    if(isEmpty(end))
+      return renderEmptyDate(endSpanElement);
+
+    const endDate = endElement.valueAsDate;
+    if(!endDate
+      || !isMoreThen(endDate.getTime(), startDate.getTime()))
+        return renderInvalidDate(endSpanElement);
+
+    endSpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
+
+    getInfoByCity(city, startDate, endDate)
       .then(result => {
         Info.render(result);
         Modal.close();

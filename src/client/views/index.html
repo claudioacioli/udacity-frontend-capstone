@@ -51,14 +51,21 @@
         </div>
         <div class="modal__body">
           <div>
-            <label class="label mt--1">Where:</label>
+            <label class="label mt--1">City:</label>
             <input type="text" class="textfield" id="city" name="city" autocomplete="off" placeholder="Where">
             <span class="textfield__error"></span>
           </div> 
-          <div>
-            <label class="label mt--1">When</label>
-            <input type="date" class="textfield" id="date" name="date">
-            <span class="textfield__error"></span>
+          <div class="d--flex">
+            <div class="mt--0 fx--1 mr--1">
+              <label class="label mt--1">From</label>
+              <input type="date" class="textfield" id="start" name="start">
+              <span class="textfield__error"></span>
+            </div>
+            <div class="mt--0 fx--1 ml--1">
+              <label class="label mt--1">To</label>
+              <input type="date" class="textfield" id="end" name="end">
+              <span class="textfield__error"></span>
+            </div>
           </div>
         </div>
         <div class="modal__footer align--right" >
