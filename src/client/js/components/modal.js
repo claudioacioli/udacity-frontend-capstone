@@ -1,5 +1,5 @@
-import { bySelector, byId } from './by';
-import { CSS_CLASS_MODAL_SHOW } from './constants';
+import { bySelector, byId } from '../utils/by';
+import { CSS_CLASS_MODAL_SHOW } from '../utils/constants';
 
 const
 

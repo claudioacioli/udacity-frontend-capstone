@@ -1,4 +1,4 @@
-import { getData } from './rest.js';
+import { getData } from './rest';
 
 export const
   

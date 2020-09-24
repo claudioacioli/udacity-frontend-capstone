@@ -1,5 +1,5 @@
-import { byId, bySelector, byAll } from './by';
-import { CSS_CLASS_HIDE } from './constants';
+import { byId, bySelector, byAll } from '../utils/by';
+import { CSS_CLASS_HIDE } from '../utils/constants';
 
 const
   template = byId('card-template'),

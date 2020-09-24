@@ -1,4 +1,4 @@
-import { byId, bySelector } from './by';
+import { byId, bySelector } from '../utils/by';
 
 const
 

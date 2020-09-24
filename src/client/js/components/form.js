@@ -1,15 +1,15 @@
-import { byId, bySelector } from './by';
-import { getInfoByCity } from './api';
+import { byId, bySelector } from '../utils/by';
+import { getInfoByCity } from '../api';
 import { 
   CSS_CLASS_INPUT_ERROR,
   MESSAGE_ERROR_EMPTY_CITY,
   MESSAGE_ERROR_EMPTY_DATE,
   MESSAGE_ERROR_INVALID_DATE
-} from './constants';
+} from '../utils/constants';
 import {
   isEmpty,
   isMoreThen
-} from './utils';
+} from '../utils';
 import Info from './info';
 import Modal from './modal';
 

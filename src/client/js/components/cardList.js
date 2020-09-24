@@ -1,4 +1,4 @@
-import { byId } from './by';
+import { byId } from '../utils/by';
 import Card from './card';
 
 const
