@@ -1,5 +1,5 @@
 import './styles/cssura-v1.1.5.css'
-import './styles/app.css'
+import './styles/index.css'
 import Modal from './js/components/modal';
 import Form from './js/components/form';
 import CardList from './js/components/cardList';
