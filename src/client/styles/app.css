@@ -29,9 +29,9 @@
 }
 
 .slogan {
-  text-shadow: 2px 2px #fff; 
-  text-indent:0; 
-  font-size:2em;
+  text-shadow: 2px 2px #fff!important;
+  text-indent: 0!important; 
+  font-size: 2em!important;
 }
 
 .bg--city {
