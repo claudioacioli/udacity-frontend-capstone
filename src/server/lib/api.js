@@ -1,6 +1,9 @@
 const { getData } = require('./rest.js')
+const { makeStartEndDates, formatDate } = require('./utils')
 
 const 
+
+  WEATHERBIT_URL_ICON = `https://www.weatherbit.io/static/img/icons`,
 
   getGeolocationByCity = async city => {
     const username = process.env.API_USERNAME_GEONAMES
@@ -21,6 +24,7 @@ const
   getDataFromWeatherBit = async path => {
     const key = process.env.API_KEY_WETHER_BIT
     const url = new URL(`https://api.weatherbit.io/v2.0${path}&key=${key}`)
+    console.log(url)
     const result = await getData(url)
     const data = result && "data" in result && result.data ? result.data : []
     return data.length ? data[0] : [];
@@ -29,20 +33,19 @@ const
   getWeatherByCoords = async (lat, lng) => {
     const url = `/current?lat=${lat}&lon=${lng}`
     const result = await getDataFromWeatherBit(url)
-    return { 
-      weather_icon_url: `https://www.weatherbit.io/static/img/icons/${result.weather.icon}.png`,
+    return {
+      weather_icon_url: `${WEATHERBIT_URL_ICON}/${result.weather.icon}.png`,
       ...result
     }
   },
 
-  getWeatherByCoordsAndDate = async (lat, lng, start, end) => {
-    const url = `/history/daily?lat=${lat}&lon=${lng}&start_date=${start}&end_date=${end}`
+  getHistoricalWeatherByCoords = async (lat, lng, date) => {
+    const { start, end } = makeStartEndDates(date)
+    const url = `/history/daily?lat=${lat}&lon=${lng}&start_date=${formatDate(start)}&end_date=${formatDate(end)}`
     const result = await getDataFromWeatherBit(url)
-    return { 
-      weather_icon_url: `https://www.weatherbit.io/static/img/icons/${result.weather.icon}.png`,
-      ...result
-    }
-  },
+    return result
+  }
+
   getDataFromPixabay = async q => {
     const key = process.env.API_KEY_PIXABAY 
     const url = new URL(`https://pixabay.com/api/?key=${key}&image_type=photo&q=${q}&category=places&per_page=3`)
@@ -63,5 +66,6 @@ const
 module.exports = {
   getCoordsByCity,
   getWeatherByCoords,
+  getHistoricalWeatherByCoords,
   getImagesByCity
 }
