@@ -1,5 +1,5 @@
 import { byId, bySelector } from '../utils/by';
-import { getInfoByCity } from '../api';
+import { getTravelInfo } from '../api';
 import { 
   CSS_CLASS_INPUT_ERROR,
   MESSAGE_ERROR_EMPTY_CITY,
@@ -10,7 +10,7 @@ import {
   isEmpty,
   isMoreThen
 } from '../utils';
-import Info from './info';
+import CardList from './cardList';
 import Modal from './modal';
 
 const 
@@ -38,6 +38,11 @@ const
     element.classList.add(CSS_CLASS_INPUT_ERROR);
   },
 
+  renderLoading = () => {
+    buttonElement.textContent = 'travelling';
+    buttonElement.disabled = true;
+  },
+
   renderResetForm = () => {
     cityElement.value = '';
     startElement.value = '';
@@ -45,6 +50,8 @@ const
     citySpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
     startSpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
     endSpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
+    buttonElement.textContent = 'Lets see...';
+    buttonElement.disabled = false;
   },
 
   handleSubmit = e => {
@@ -80,18 +87,24 @@ const
         return renderInvalidDate(endSpanElement);
 
     endSpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
+    renderLoading();
 
-    getInfoByCity(city, startDate, endDate)
-      .then(result => {
-        Info.render(result);
-        Modal.close();
-      })
-      .catch(err => {
-        console.error(err);
-      })
+    getTravelInfo(
+      city, 
+      startDate.getTime(), 
+      endDate.getTime()
+    ).then(result => {
+      renderResetForm();
+      console.log(result);
+      CardList.append(result);
+      Modal.close();
+    })
+    .catch(err => {
+      console.error(err);
+    })
 
   },
-
+  
   init = () => {
     buttonElement.addEventListener("click", handleSubmit);
   }
