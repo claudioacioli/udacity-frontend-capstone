@@ -1,10 +1,13 @@
 import { getData, postData } from './rest';
+import { URL_API } from '../utils/constants';
 
 export const
-  
-  createTravel = async (city, start, end) => {
-    const url = `http://localhost:3000/api/`;
-    return await postData(url, {city, start, end});
-  }
+
+  readTravels = async () =>
+    await getData(URL_API)
+  ,
+
+  createTravel = async (city, start, end) => 
+    await postData(URL_API, {city, start, end})
 
 ;

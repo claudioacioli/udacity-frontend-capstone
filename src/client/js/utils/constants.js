@@ -1,4 +1,6 @@
 export const
+  // ROUTES
+  URL_API = `http://localhost:3000/api/`,
   // CSS Classes
   CSS_CLASS_INPUT_ERROR = 'textfield--error',
   CSS_CLASS_MODAL_SHOW = 'modal--show',
