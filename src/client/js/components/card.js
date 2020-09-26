@@ -21,11 +21,11 @@ const
     return imageElement;
   },
 
-  createCard = ({start, end, city, temp, weather, images}) => {
+  createCard = ({images, name, min_temp, max_temp, start, end}) => {
     dateElement.textContent = `${start} to ${end}`;
-    titleElement.textContent = city;
-    tempElement.textContent = temp;
-    weatherElement.textContent = weather;
+    titleElement.textContent = name;
+    tempElement.innerHTML = `min: ${min_temp}&#176; - max: ${max_temp}&#176;`;
+    imageElement.innerHTML = ``;
     imageElement.appendChild(createImage(images[0]));
     const cloneElement = document.importNode(template.content, true);
     return cloneElement; 
