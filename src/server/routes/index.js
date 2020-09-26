@@ -1,4 +1,5 @@
 const { getCoordsByCity, getHistoricalWeatherByCoords, getImagesByCity } = require('../lib/api')
+const { formatDate } = require('../lib/utils')
 
 const 
 
@@ -30,8 +31,13 @@ const
 
     const images = await getImagesByCity(city)
 
-    res.send({...geoResult, ...weatherResult, images})
-
+    res.send({
+      start: formatDate(startDate),
+      end: formatDate(endDate), 
+      ...geoResult, 
+      ...weatherResult, 
+      images
+    })
   },
 
   notFoundRoute = (req, res) => {
