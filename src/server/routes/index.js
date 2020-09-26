@@ -4,9 +4,17 @@ const
 
   apiRoute = async (req, res) => {
   
-    const city = "city" in req.query ? req.query.city.toString().trim() : ''
-    const start = "start" in req.query ? req.query.start.toString().trim() : ''
-    const end = "end" in req.query ? req.query.end.toString().trim() : ''
+    const city = "city" in req.query 
+      ? req.query.city.toString().trim() 
+      : ''
+
+    const start = "start" in req.query 
+      ? req.query.start.toString().trim() 
+      : ''
+
+    const end = "end" in req.query 
+      ? req.query.end.toString().trim() 
+      : ''
 
     const startDate = new Date(Number(start))
     const endDate = new Date(Number(end))
