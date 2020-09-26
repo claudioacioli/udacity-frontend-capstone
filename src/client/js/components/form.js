@@ -1,5 +1,5 @@
 import { byId, bySelector } from '../utils/by';
-import { getTravelInfo } from '../api';
+import { createTravel } from '../api';
 import { 
   CSS_CLASS_INPUT_ERROR,
   MESSAGE_ERROR_EMPTY_CITY,
@@ -89,7 +89,7 @@ const
     endSpanElement.classList.remove(CSS_CLASS_INPUT_ERROR);
     renderLoading();
 
-    getTravelInfo(
+    createTravel(
       city, 
       startDate.getTime(), 
       endDate.getTime()
