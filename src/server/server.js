@@ -3,7 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const dotenv = require('dotenv')
-const { createTravelRoute, notFoundRoute } = require('./routes')
+const Route = require('./routes')
 
 // Settings
 const port = 3000
@@ -15,8 +15,9 @@ app.use(cors())
 app.use(express.static('dist'))
 
 // Routes
-app.post('/api/', createTravelRoute)
-app.use(notFoundRoute)
+app.get('/api/', Route.readTravels)
+app.post('/api/', Route.createTravel)
+app.use(Route.notFound)
 
 // Listening
 app.listen(port, () => {

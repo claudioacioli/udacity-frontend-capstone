@@ -5,7 +5,11 @@ const travels = [];
 
 const 
 
-  createTravelRoute = async (req, res) => {
+  readTravels = async (req, res) => {
+    res.send(travels)
+  },
+
+  createTravel = async (req, res) => {
 
     const { city='', start=0, end=0 } = req.body
 
@@ -35,13 +39,14 @@ const
     res.send(travel)
   },
 
-  notFoundRoute = (req, res) => {
+  notFound = (req, res) => {
     res.type('text/plain')
     res.send('Ops, where are you?\nNot Found!')
   }
 ;
 
 module.exports = {
-  createTravelRoute,
-  notFoundRoute
+  readTravels,
+  createTravel,
+  notFound
 };
