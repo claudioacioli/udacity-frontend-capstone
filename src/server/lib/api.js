@@ -43,7 +43,7 @@ const
     const url = `/history/daily?lat=${lat}&lon=${lng}&start_date=${formatDate(start)}&end_date=${formatDate(end)}`
     const result = await getDataFromWeatherBit(url)
     return result
-  }
+  },
 
   getDataFromPixabay = async q => {
     const key = process.env.API_KEY_PIXABAY 
