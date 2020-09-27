@@ -24,7 +24,6 @@ const
   getDataFromWeatherBit = async path => {
     const key = process.env.API_KEY_WETHER_BIT
     const url = new URL(`https://api.weatherbit.io/v2.0${path}&key=${key}`)
-    console.log(url)
     const result = await getData(url)
     const data = result && "data" in result && result.data ? result.data : []
     return data.length ? data[0] : [];
