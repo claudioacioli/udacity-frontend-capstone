@@ -17,6 +17,7 @@ app.use(express.static('dist'))
 // Routes
 app.get('/api/', Route.readTravels)
 app.post('/api/', Route.createTravel)
+app.delete('/api/:id', Route.deleteTravel)
 app.use(Route.notFound)
 
 // Listening
