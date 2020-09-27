@@ -53,6 +53,7 @@ const
   },
 
   notFound = (req, res) => {
+    res.status(404)
     res.type('text/plain')
     res.send('Ops, where are you?\nNot Found!')
   }
