@@ -9,6 +9,7 @@ const
   auxElements = byAll('.card__text', template.content),
   tempElement = bySelector('h2', auxElements[0]),
   weatherElement = bySelector('span', auxElements[1]),
+  buttonElement = bySelector('button', template.content),
   
   handleError = e => 
     e.target.classList.add('hide')
@@ -21,17 +22,26 @@ const
     return imageElement;
   },
 
-  createCard = ({images, name, min_temp, max_temp, start, end}) => {
+  createCard = ({api_id, images, name, min_temp, max_temp, start, end}) => {
     dateElement.textContent = `${start} to ${end}`;
     titleElement.textContent = name;
     tempElement.innerHTML = `min: ${min_temp}&#176; - max: ${max_temp}&#176;`;
     imageElement.innerHTML = ``;
     imageElement.appendChild(createImage(images[0]));
+    buttonElement.dataset.id = api_id;
     const cloneElement = document.importNode(template.content, true);
+    cloneElement.firstElementChild.id = api_id;
     return cloneElement; 
+  },
+
+  removeCard = (id) => {
+    const element = byId(id);
+    if(element)
+      element.remove()
   }
 ;
 
 export default {
-  create: createCard
+  create: createCard,
+  remove: removeCard
 }
