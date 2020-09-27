@@ -4,7 +4,7 @@
   "description": "Udacity FrontEnd Nanodegree",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build-prod": "rm -rf dist & npx webpack --config webpack.prod.js",
     "build-dev": "npx webpack-dev-server --config webpack.dev.js --open",
     "start": "node src/server/server.js"
