@@ -1,12 +1,17 @@
 const { getCoordsByCity, getHistoricalWeatherByCoords, getImagesByCity } = require('../lib/api')
 const { formatDate } = require('../lib/utils')
-
-const travels = [];
+const { v4: uuidv4 } = require('uuid')
 
 const 
 
+  travels = {},
+
   readTravels = async (req, res) => {
-    res.send(travels)
+    res.send(
+      Object
+        .keys(travels)
+        .map(id => travels[id])
+    )
   },
 
   createTravel = async (req, res) => {
@@ -27,7 +32,9 @@ const
 
     const images = await getImagesByCity(city)
 
+    const id = uuidv4()
     const travel = {
+      api_id: id,
       start: formatDate(startDate),
       end: formatDate(endDate), 
       ...geoResult, 
@@ -35,7 +42,7 @@ const
       images
     }
 
-    travels.push(travel)
+    travels[id] = travel
     res.send(travel)
   },
 
