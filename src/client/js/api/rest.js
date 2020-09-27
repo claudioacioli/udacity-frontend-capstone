@@ -40,7 +40,7 @@ export const
   },
 
   deleteData = async (url, mode="cors") => {
-    return await fetch(url, {
+    const response = await fetch(url, {
       method: "DELETE",
       credentials: "same-origin",
       mode,
@@ -48,5 +48,14 @@ export const
         "Content-Type": "application/json"
       })
     });
+    
+    return new Promise((resolve, reject) => {
+      if(response.status === 204)
+        resolve('')
+      else {
+        console.error(`delete method not found`)
+        reject()
+      }
+    })
   }
 ;
