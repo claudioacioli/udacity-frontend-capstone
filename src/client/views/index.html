@@ -16,7 +16,7 @@
               <h2></h2>
             </div>
             <div class="card__text mt--1">
-              <strong class="mr--1">Weather:</strong>
+              <strong class="mr--1"></strong>
               <span></span>
             </div>
             <div class="card__text mt--1 mb--2">
@@ -72,6 +72,11 @@
         </div>
       </div>
     </div>
-
+    <script>
+      if('serviceWorker' in navigator)
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+        })
+    </script>
   </body>
 </html>
