@@ -95,7 +95,6 @@ const
       endDate.getTime()
     ).then(result => {
       renderResetForm();
-      console.log(result);
       CardList.append(result);
       Modal.close();
     })
