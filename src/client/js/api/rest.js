@@ -37,5 +37,16 @@ export const
     } catch (ex) {
       console.error("Error", ex);
     }
+  },
+
+  deleteData = async (url, mode="cors") => {
+    return await fetch(url, {
+      method: "DELETE",
+      credentials: "same-origin",
+      mode,
+      headers: new Headers({
+        "Content-Type": "application/json"
+      })
+    });
   }
 ;
