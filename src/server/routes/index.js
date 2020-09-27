@@ -46,6 +46,12 @@ const
     res.send(travel)
   },
 
+  deleteTravel = (req, res) => {
+    const id = req.params.id.toString().trim()
+    delete travels[id]
+    res.status(204).send()
+  },
+
   notFound = (req, res) => {
     res.type('text/plain')
     res.send('Ops, where are you?\nNot Found!')
@@ -55,5 +61,6 @@ const
 module.exports = {
   readTravels,
   createTravel,
+  deleteTravel,
   notFound
 };
